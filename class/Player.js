@@ -1,5 +1,6 @@
 const Character = require('./Character');
 const random = require('../utils/random');
+const chalk = require('chalk');
 
 module.exports = class Player extends Character {
   constructor(props) {
@@ -18,24 +19,29 @@ module.exports = class Player extends Character {
   attack(enemy) {
     const atk = random(this.atk) + this.bonusAtk;
 
-    console.log(`${this.name} attaque ${enemy.name}`);
+    console.log(`${chalk.blue(this.name)} attaque ${chalk.red(enemy.name)}`);
     enemy.hp -= atk;
-    console.log(`${enemy.name} subit ${atk}PV de dégats`);
+    console.log(`${chalk.red(enemy.name)} subit ${chalk.red(atk)}PV de dégats`);
 
     enemy.alive = enemy.hp > 0;
     return (enemy.hp);
   }
 
   improveAtk() {
-    const bonusAtk = random(10);
-    this.bonusAtk += bonusAtk;
-    console.log(`Vous améliorez votre attaque de ${bonusAtk}`);
+    if (this.mana >= 15){
+      const bonusAtk = random(8) + 2;
+      this.bonusAtk += bonusAtk;
+      this.mana -= 15;
+      console.log(`Vous améliorez votre attaque de ${bonusAtk}`);
+    } else {
+      console.log('T\'as pas assez de mana faquin!')
+    }
   }
 
   heal() {
-    if (this.mana >= 25){
+    if (this.mana >= 15){
       this.hp += (this.hp < 86) ? 14 : 100 - this.hp;
-      this.mana -= 25;
+      this.mana -= 15;
       console.log('Vous vous soignez de 14 PV');
     } else {
       console.log('T\'as pas assez de mana faquin!')

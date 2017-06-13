@@ -56,11 +56,11 @@ module.exports = class Game {
     this.turn += 1;
 
     this.actions.push({
-      string: `${chalk.cyan.bold(i++)} - Se soigner`,
+      string: `${chalk.cyan.bold(i++)} - Se soigner (15 MP)`,
       func: this.player.heal,
     });
     this.actions.push({
-      string: `${chalk.cyan.bold(i++)} - Améliorer son attaque`,
+      string: `${chalk.cyan.bold(i++)} - Améliorer son attaque (15 MP)`,
       func: this.player.improveAtk,
     })
     this.enemies
@@ -77,7 +77,10 @@ module.exports = class Game {
   }
 
   init() {
-    console.log(`Ainsi débutent les aventures de ${this.player.name}`);
+    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+    console.log(`
+        ${chalk.yellow.underline(`Ainsi débutent les aventures de ${this.player.name}`)}
+                `);
     this._gameLoop();
   }
 
@@ -94,7 +97,7 @@ module.exports = class Game {
         if (result && result.choice === 'q') { process.exit(); }
         if (result && this.actions[result.choice]) {
           this.actions[result.choice].func();
-
+          console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
           this._enemiesAttack();
 
           this.player.moreMana();

@@ -1,5 +1,4 @@
 const chalk = require('chalk');
-
 const random = require('../utils/random');
 
 module.exports = class Character {
@@ -7,7 +6,7 @@ module.exports = class Character {
     this.name = name;
     this.hp = 100;
     this.alive = true;
-    this.atk = 10;
+    this.atk = 8;
 
     this.attack = this.attack.bind(this);
   };
