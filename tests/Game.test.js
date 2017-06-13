@@ -9,15 +9,11 @@ describe('Game', () => {
   });
 
   it('heal the player', () => {
-    game.player.hp = 67;
+    game.player.hp = 80;
 
     game._displayInfos();
     game.actions[0].func();
-    expect(game.player.hp).toBe(77);
-    game.actions[0].func();
-    expect(game.player.hp).toBe(87);
-    game.actions[0].func();
-    expect(game.player.hp).toBe(97);
+    expect(game.player.hp).toBe(94);
     game.actions[0].func();
     expect(game.player.hp).toBe(100);
   });
