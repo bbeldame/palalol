@@ -1,0 +1,1 @@
+module.exports = (int) => Math.floor(Math.random() * int);
